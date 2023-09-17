@@ -1,4 +1,4 @@
-package com.example.primowiki.ui.theme
+package com.aldtech.primowiki.presentation.ui.theme
 
 import androidx.compose.ui.graphics.Color
 

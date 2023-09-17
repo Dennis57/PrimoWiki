@@ -1,4 +1,4 @@
-package com.example.primowiki
+package com.aldtech.primowiki
 
 import org.junit.Test
 

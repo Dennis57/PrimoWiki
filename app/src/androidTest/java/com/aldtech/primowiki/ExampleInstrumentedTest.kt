@@ -1,4 +1,4 @@
-package com.example.primowiki
+package com.aldtech.primowiki
 
 import androidx.test.platform.app.InstrumentationRegistry
 import androidx.test.ext.junit.runners.AndroidJUnit4

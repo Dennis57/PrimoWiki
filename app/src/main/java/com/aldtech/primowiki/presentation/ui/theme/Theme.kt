@@ -1,4 +1,4 @@
-package com.example.primowiki.ui.theme
+package com.aldtech.primowiki.presentation.ui.theme
 
 import android.app.Activity
 import android.os.Build
