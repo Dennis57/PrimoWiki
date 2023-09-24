@@ -38,6 +38,8 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.navigation.NavHostController
+import androidx.navigation.compose.rememberNavController
 import com.aldtech.primowiki.presentation.ui.NavigationItem
 import com.aldtech.primowiki.presentation.ui.theme.PrimoWikiTheme
 import kotlinx.coroutines.launch
@@ -70,6 +72,7 @@ class MainActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colorScheme.background
                 ) {
+                    val navController: NavHostController = rememberNavController(),
                     val drawerState = rememberDrawerState(initialValue = DrawerValue.Closed)
                     val scope = rememberCoroutineScope()
                     var selectedItemIndex by rememberSaveable {
@@ -88,6 +91,7 @@ class MainActivity : ComponentActivity() {
                                         },
                                         selected = index == selectedItemIndex,
                                         onClick = {
+                                            navController.navigate(item.route)
                                             selectedItemIndex = index
                                             scope.launch {
                                                 drawerState.close()
