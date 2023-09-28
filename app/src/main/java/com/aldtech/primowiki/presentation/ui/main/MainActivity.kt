@@ -39,118 +39,21 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
+import androidx.navigation.compose.NavHost
+import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.aldtech.primowiki.presentation.ui.NavigationItem
+import com.aldtech.primowiki.presentation.ui.main.artifact.ArtifactScreen
+import com.aldtech.primowiki.presentation.ui.main.character.CharacterScreen
+import com.aldtech.primowiki.presentation.ui.main.home.HomeScreen
 import com.aldtech.primowiki.presentation.ui.theme.PrimoWikiTheme
 import kotlinx.coroutines.launch
 
 class MainActivity : ComponentActivity() {
-    @OptIn(ExperimentalMaterial3Api::class)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
-            PrimoWikiTheme {
-                val items = listOf(
-                    NavigationItem(
-                        title = "Home",
-                        selectedIcon = Icons.Filled.Home,
-                        unselectedIcon = Icons.Outlined.Home
-                    ),
-                    NavigationItem(
-                        title = "Characters",
-                        selectedIcon = Icons.Filled.Person,
-                        unselectedIcon = Icons.Outlined.Person
-                    ),
-                    NavigationItem(
-                        title = "Artiifacts",
-                        selectedIcon = Icons.Filled.Settings,
-                        unselectedIcon = Icons.Outlined.Settings
-                    )
-                )
-                // A surface container using the 'background' color from the theme
-                Surface(
-                    modifier = Modifier.fillMaxSize(),
-                    color = MaterialTheme.colorScheme.background
-                ) {
-                    val navController: NavHostController = rememberNavController(),
-                    val drawerState = rememberDrawerState(initialValue = DrawerValue.Closed)
-                    val scope = rememberCoroutineScope()
-                    var selectedItemIndex by rememberSaveable {
-                        mutableStateOf(0)
-                    }
-                    ModalNavigationDrawer(
-                        drawerContent = {
-                            ModalDrawerSheet {
-                                Spacer(modifier = Modifier.height(16.dp))
-                                items.forEachIndexed { index, item ->
-                                    NavigationDrawerItem(
-                                        label = {
-                                            Text(
-                                                text = item.title
-                                            )
-                                        },
-                                        selected = index == selectedItemIndex,
-                                        onClick = {
-                                            navController.navigate(item.route)
-                                            selectedItemIndex = index
-                                            scope.launch {
-                                                drawerState.close()
-                                            }
-                                        },
-                                        icon = {
-                                            Icon(
-                                                imageVector = if (index == selectedItemIndex) {
-                                                    item.selectedIcon
-                                                } else {
-                                                    item.unselectedIcon
-                                                },
-                                                contentDescription = item.title
-                                            )
-                                        },
-                                        badge = {
-                                            item.badgeCount?.let {
-                                                Text(
-                                                    text = item.badgeCount.toString()
-                                                )
-                                            }
-                                        },
-                                        modifier = Modifier.padding(NavigationDrawerItemDefaults.ItemPadding)
-                                    )
-                                }
-                            }
-                        },
-                        drawerState = drawerState
-                    ) {
-                        Scaffold(
-                            topBar = {
-                                TopAppBar(
-                                    title = {
-                                        Text(
-                                            text = "Primo Wiki"
-                                        )
-                                    },
-                                    navigationIcon = {
-                                        IconButton(
-                                            onClick = {
-                                                scope.launch {
-                                                    drawerState.open()
-                                                }
-                                            }
-                                        ) {
-                                            Icon(
-                                                imageVector = Icons.Default.Menu,
-                                                contentDescription = "Menu"
-                                            )
-                                        }
-                                    }
-                                )
-                            }
-                        ) {
-
-                        }
-                    }
-                }
-            }
+            MainCompose()
         }
     }
 }
