@@ -7,6 +7,7 @@ import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.defaultMinSize
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
@@ -69,10 +70,11 @@ fun ElementSort() {
             Row (
                 modifier = Modifier
                     .fillMaxWidth(),
-                horizontalArrangement = Arrangement.SpaceAround
+                horizontalArrangement = Arrangement.SpaceEvenly
             ) {
                 TextButton(
-                    onClick = { /*TODO*/ }
+                    onClick = { /*TODO*/ },
+                    modifier = Modifier.padding(0.dp).defaultMinSize(1.dp, 1.dp)
                 ) {
                     Image(
                         imageVector = ImageVector.vectorResource(id = R.drawable.ic_element_anemo),
@@ -80,7 +82,8 @@ fun ElementSort() {
                     )
                 }
                 TextButton(
-                    onClick = { /*TODO*/ }
+                    onClick = { /*TODO*/ },
+                    modifier = Modifier.padding(0.dp).defaultMinSize(1.dp, 1.dp)
                 ) {
                     Image(
                         imageVector = ImageVector.vectorResource(id = R.drawable.ic_element_geo),
@@ -88,7 +91,8 @@ fun ElementSort() {
                     )
                 }
                 TextButton(
-                    onClick = { /*TODO*/ }
+                    onClick = { /*TODO*/ },
+                    modifier = Modifier.padding(0.dp).defaultMinSize(1.dp, 1.dp)
                 ) {
                     Image(
                         imageVector = ImageVector.vectorResource(id = R.drawable.ic_element_electro),
@@ -96,7 +100,8 @@ fun ElementSort() {
                     )
                 }
                 TextButton(
-                    onClick = { /*TODO*/ }
+                    onClick = { /*TODO*/ },
+                    modifier = Modifier.padding(0.dp).defaultMinSize(1.dp, 1.dp)
                 ) {
                     Image(
                         imageVector = ImageVector.vectorResource(id = R.drawable.ic_element_dendro),
@@ -104,7 +109,8 @@ fun ElementSort() {
                     )
                 }
                 TextButton(
-                    onClick = { /*TODO*/ }
+                    onClick = { /*TODO*/ },
+                    modifier = Modifier.padding(0.dp).defaultMinSize(1.dp, 1.dp)
                 ) {
                     Image(
                         imageVector = ImageVector.vectorResource(id = R.drawable.ic_element_hydro),
@@ -112,7 +118,8 @@ fun ElementSort() {
                     )
                 }
                 TextButton(
-                    onClick = { /*TODO*/ }
+                    onClick = { /*TODO*/ },
+                    modifier = Modifier.padding(0.dp).defaultMinSize(1.dp, 1.dp)
                 ) {
                     Image(
                         imageVector = ImageVector.vectorResource(id = R.drawable.ic_element_pyro),
@@ -120,7 +127,8 @@ fun ElementSort() {
                     )
                 }
                 TextButton(
-                    onClick = { /*TODO*/ }
+                    onClick = { /*TODO*/ },
+                    modifier = Modifier.padding(0.dp).defaultMinSize(1.dp, 1.dp)
                 ) {
                     Image(
                         imageVector = ImageVector.vectorResource(id = R.drawable.ic_element_cryo),
