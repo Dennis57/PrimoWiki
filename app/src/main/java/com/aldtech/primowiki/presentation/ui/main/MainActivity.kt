@@ -47,8 +47,10 @@ import com.aldtech.primowiki.presentation.ui.main.artifact.ArtifactScreen
 import com.aldtech.primowiki.presentation.ui.main.character.CharacterScreen
 import com.aldtech.primowiki.presentation.ui.main.home.HomeScreen
 import com.aldtech.primowiki.presentation.ui.theme.PrimoWikiTheme
+import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 
+@AndroidEntryPoint
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
