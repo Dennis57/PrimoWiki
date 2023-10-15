@@ -1,8 +1,12 @@
 package com.aldtech.primowiki.presentation.ui.main
 
+import android.Manifest
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
+import androidx.activity.result.ActivityResultLauncher
+import androidx.activity.result.contract.ActivityResultContracts
+import androidx.activity.viewModels
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.height
@@ -45,6 +49,7 @@ import androidx.navigation.compose.rememberNavController
 import com.aldtech.primowiki.presentation.ui.NavigationItem
 import com.aldtech.primowiki.presentation.ui.main.artifact.ArtifactScreen
 import com.aldtech.primowiki.presentation.ui.main.character.CharacterScreen
+import com.aldtech.primowiki.presentation.ui.main.character.CharacterViewModel
 import com.aldtech.primowiki.presentation.ui.main.home.HomeScreen
 import com.aldtech.primowiki.presentation.ui.theme.PrimoWikiTheme
 import dagger.hilt.android.AndroidEntryPoint
@@ -52,8 +57,19 @@ import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
 class MainActivity : ComponentActivity() {
+    private val viewModel: CharacterViewModel by viewModels()
+    private lateinit var permissionLauncher: ActivityResultLauncher<Array<String>>
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        permissionLauncher = registerForActivityResult(
+            ActivityResultContracts.RequestMultiplePermissions()
+        ) {
+            viewModel.loadCharacterHeaderInfo()
+        }
+        permissionLauncher.launch(arrayOf(
+            Manifest.permission.ACCESS_FINE_LOCATION,
+            Manifest.permission.ACCESS_COARSE_LOCATION,
+        ))
         setContent {
             MainCompose()
         }
